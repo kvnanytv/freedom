@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [ngBoilerplate](http://joshdmiller.github.com/ng-boilerplate) [![Build Status](https://travis-ci.org/joshdmiller/ng-boilerplate.png?branch=master)](https://travis-ci.org/joshdmiller/ng-boilerplate)
 
 An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
@@ -377,3 +378,9 @@ of you!
 
 So join the team! We're good people.
 
+=======
+freedom
+=======
+
+freedom in angularjs + nodejs
+>>>>>>> d92a409f1555ebb4c07796612865b462d0ac7ed3
