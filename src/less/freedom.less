@@ -11,51 +11,170 @@ html, body {
 }
 
 body {
-    padding-left:270px;
+    /*padding-left:270px;*/
+    padding-top:50px;
     margin:0;
     background-color:#ECECEC;
 }
+h1, h2, h3, h4, h5, h6 {
+  margin:0 0;
+}
+div.page-container {
+  width: 100%;
+}
+div.page-container .page {
+  margin:0 auto;
+}
+div.page-container .page.side-bar-active {
+  padding-left:230px;
+}
+div.page-container .page .content {
+  margin:0 auto;
+  -webkit-transition: width 200ms linear;
+  -moz-transition: width 200ms linear;
+  -o-transition: width 200ms linear;
+  -ms-transition: width 200ms linear;
+  transition: width 200ms linear;
+  /*padding-top:10px;*/
+}
+@media all and (max-width: 1229px) and (min-width: 600px) {
+  div.page-container .page .content {
+    width:810px;
+  }
+  div.page-container .page.side-bar-active .content {
+    width:700px;
+  }
+}
+@media all and (max-width: 1534px) and (min-width: 1230px) {
+  div.page-container .page .content {
+    width:1110px;
+  }
+  div.page-container .page.side-bar-active .content {
+    width:1056px;
+  }
+}
+@media all and (min-width: 1535px) {
+  div.page-container .page .content {
+    width:1410px;
+  }
+  div.page-container .page.side-bar-active .content {
+    width:1300px;
+  }
+}
+
+div.content .page {
+  margin:auto;
+}
+
+
+/* TOPBAR STYLE */
+div.topbar {
+  position:fixed;
+  height:50px;
+  width:100%; 
+  top:0;
+  left:0;
+  background-color:#ffffff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size:120%;
+  background-color:#ffffff;
+  vertical-align: top;
+  z-index: 1999999999;
+}
+div.topbar .topbar-container {
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  background: transparent;
+}
+.freedom-logo {
+    width: 230px; 
+    height: 50px;
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+.freedom-logo img { width:130px; display:inline-block; }
+.freedom-logo img, .freedom-logo h6, .freedom-logo button { float: left; }
+.freedom-logo img { margin-right: 5px; }
+.freedom-logo h6 {  font-size: 14px; }
+.freedom-logo h6 span { font-size: 12px; }
+.freedom-logo button { margin-top:7px; margin-left:5px;}
+
+div.topbar .search-box {
+  height:45px;
+  width:600px;
+  padding:7px 5px 7px 5px;
+  position: relative;
+  /*margin-left: 230px;*/
+  top:0px;
+  /*left:0px;*/
+  overflow:hidden;
+}
+div.topbar .search-box form {
+  overflow: hidden;
+  display:inline-block;
+  width:500px;
+}
+
+div.topbar .search-box input, .freedom-logo button {
+  border-radius:0px;
+  display:inline-block;
+  /*float:left;*/
+}
+div.topbar .search-box input[type="text"] {
+  width:400px;
+  border-right:0;
+}
+div.topbar .search-box button {
+  width:80px;
+  margin:0;
+  border-radius:0;
+}
+div.topbar .account-box {
+  position: relative;
+  display: block;
+  float: right;
+  width: 200px;
+  height: 50px;
+  padding:8px 12px;
+  text-align:right;
+  z-index:30;
+}
+div.topbar .account-box form {
+  width:500px;
+}
+div.topbar .account-box .signin {
+  color: #333333;
+  text-decoration: none;
+  border-radius:0;
+}
+/* SIDEBAR STYLE */
 div.sidebar {
    position:fixed;
    height:100%;
-   width:270px; 
+   width:230px; 
    top:0;
    left:0;
-   /*border-right:1px solid #e6e6e6;*/
+   bottom:0px;
    background-color:#ffffff;
-   /*box-shadow: 0 1px 2px rgba(0,0,0,.1);
+   box-shadow: 0 1px 2px rgba(0,0,0,.3);
    -moz-box-sizing: border-box;
-   box-sizing: border-box;*/
+   box-sizing: border-box;
    font-size:120%;
-   /*padding:9px 12px 9px 12px;*/
-   /*position: relative; */
+   margin:0;
+   margin-top:50px;
 }
-div.content {    
-  display:block;
-  width:100%;
-  position:relative;
-}
-
 div.sidebar .footer {
   position: absolute; 
-  bottom: 0; 
+  bottom: 50px;
 }
 div.sidebar .footer small {
   padding:3px 5px 3px 5px;
 }
-
-.freedom-logo-sidebar {
-    width:270px; 
-    overflow: hidden;
-    border-bottom:1px solid #e6e6e6;
-}
-.freedom-logo-sidebar img{ width:160px; display:inline-block; }
-.freedom-logo-sidebar img, .freedom-logo-sidebar h3 { float: left; }
-.freedom-logo-sidebar img { margin-right: 5px;}
-.freedom-logo-sidebar h6 {  font-size: 18px;}
-.freedom-logo-sidebar h6 span { font-size: 14px; }
-
-
 .nav-custom-freedom {
   /*margin-right:-11px;*/
 }
@@ -65,15 +184,23 @@ div.sidebar .footer small {
   padding-right:0px !important;
   border-left:0px !important;
   border-right:0px !important;
-  height:50px !important;
+  height:40px !important;
 }
 .nav-custom-freedom li a {
   border:0 !important;
-  height:50px !important;
+  height:40px !important;
   vertical-align: middle;
+  color:#333333;
+}
+.nav-custom-freedom li.active {
+  width:101%;
 }
 .nav-custom-freedom li.active a:hover {
- background-color:#ECECEC; /* GREY */
+ /* GREY */
+  background-color:#ECECEC;
+  color:#333333;
+ /* RED */
+ /*background-color:#cc181e;*/
     -webkit-transition: background-color 200ms linear;
     -moz-transition: background-color 200ms linear;
     -o-transition: background-color 200ms linear;
@@ -81,7 +208,8 @@ div.sidebar .footer small {
     transition: background-color 200ms linear;
 }
 .nav-custom-freedom li a:hover {
-  background-color:#0088cc;  /* BLUE */
+  /*background-color:#0088cc;  /* BLUE */
+  background-color:#cc181e;
   color:#ffffff;
   -webkit-transition: background-color 200ms linear;
     -moz-transition: background-color 200ms linear;
@@ -101,4 +229,16 @@ div.sidebar .footer small {
 .nav-custom-freedom li a {
   border-right:0px !important;
   border-radius:0px 0px 0px 0px !important;
+}
+
+.wrapper {
+  background-color:#ffffff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top:10px;
+}
+
+.no-border-radius {
+  border-radius:0 !important;
 }

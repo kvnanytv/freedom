@@ -1,45 +1,40 @@
-<!-- <div class="profile-page">
-	<div class="profile">
-		<div class="content">
-			<div class="info">
-				<a href="/{{allUsers[0].custom_url}}">
-					<img class="avatar" ng-src="{{allUsers[0].avatar}}"></img>
-					<strong class="name" ng-bind="allUsers[0].fname+' '+allUsers[0].lname"></strong>
-				</a>
+<div class="profile-page">
+	<div class="wrapper">
+		<div class="top-content">
+			<div class="user">
+				<div class="user-info">
+					<div class="info">
+						<a href="/{{profile.custom_url}}">
+							<img class="avatar" ng-src="{{profile.avatar}}"></img>
+							<strong class="name" ng-bind="profile.fname+' '+profile.lname"></strong>
+						</a>
+					</div>
+					<div class="badges">
+						<span class="text-muted">Badges</span>
+						<span class="badge" title="{{badge.text}}" ng-repeat="badge in badges" ng-style="{'background-position-x':badge.sprite[0]+'px','background-position-y':badge.sprite[1]+'px'}"></span>
+					</div>
+					<div class="options">
+						<button type="button" class="btn btn-default btn-sm">Edit Profile</button>
+						
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-</div> -->
-<div class="profile-page row">
-	<div class="user-content">
-		<div class="user">
-			<div class="content">
-				<div class="info">
-					<a href="/{{profile.custom_url}}">
-						<img class="avatar" ng-src="{{profile.avatar}}"></img>
-						<strong class="name" ng-bind="profile.fname+' '+profile.lname"></strong>
-					</a>
-				</div>
-				<div class="badges">
-					<span>Badges</span>
-					<span class="badge" title="{{badge.text}}" ng-repeat="badge in badges" ng-style="{'background-position-x':badge.sprite[0]+'px','background-position-y':badge.sprite[1]+'px'}"></span>
-				</div>
-				<div class="options">
-					<button type="button" class="btn btn-default btn-sm">Edit Profile</button>
+			<div class="misc">
+				<div class="earning muted">
+					<h1>Earnings: $1</h1>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="channel-content">
-		<h4>
-			Channels
-			<button type="button" class="btn btn-default btn-sm">
-			  <i class="fa fa-plus"></i>
-			</button>
-		</h4>
-		<div class="channel">
-			
+		<div class="main-content">
+			<div id="header" class="main-content-header">
+				<ul class="navigation" ng-init="userSubmenu = 'channel'">
+					<li scrollto="header" ng-repeat="submenu in submenus" ng-class="{'active':submenu.id==selectedMenu}">
+						<a href="" ng-click="selectMenu(submenu.id)" ng-bind="submenu.text"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="main-content-body">
+			</div>
 		</div>
 	</div>
 </div>
-<!-- <pre>{{ allUsers | json}}</pre> -->

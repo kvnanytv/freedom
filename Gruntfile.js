@@ -229,14 +229,22 @@ module.exports = function ( grunt ) {
     uglify: {
       compile: {
         options: {
-          banner: '<%= meta.banner %>'
+          banner: '<%= meta.banner %>',
+          mangle: false
         },
         files: {
           '<%= concat.compile_js.dest %>': '<%= concat.compile_js.dest %>'
         }
+      },
+      dist: {
+        options: {
+          banner: '<%= meta.banner %>',
+          mangle: false
+        },
+        files: grunt.file.expandMapping(['src/**/*.js','!src/**/*min.js'], 'build/')
       }
     },
-
+ 
     /**
      * `recess` handles our LESS compilation and uglification automatically.
      * Only our `main.less` file is included in compilation; all other files

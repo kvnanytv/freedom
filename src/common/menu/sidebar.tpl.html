@@ -1,24 +1,14 @@
 <div>
-  <div class="muted freedom-logo-sidebar">
-    <img src="assets/Fredom!_logo_black.png"></img>
-    <h6>
-        Dashboard<br />
-        <span>v.0.0.1</span>
-
-        <span class="glyphicon glyphicon-search"></span>
-    </h6>   
-  </div>
   <ul class="nav nav-custom-freedom">
     <li ui-route="/overview" ng-class="{active:$uiRoute}">
       <a href="#/overview">
-        <!-- <i class="glyphicon glyphicon-home"></i> -->
         <span class="glyphicon glyphicon-home"></span>
         Overview
       </a>
     </li>
     <li ui-route="/profile" ng-class="{active:$uiRoute}">
       <a href="#/profile">
-        <i class="glyphicon glyphicon-book"></i>
+        <i class="fa fa-user"></i>
         You
       </a>
     </li>
@@ -29,7 +19,7 @@
       </a>
     </li>
   </ul>
-  <div class="footer muted">
-    <small>Powered by any.TV</small>
-  </div>
 </div>
+  <div class="footer text-muted">
+    <small>Freedom! Dashboard <span ng-bind="'v'+currentVersion"></span></small>
+  </div>

@@ -1,62 +1,52 @@
 <!DOCTYPE html>
 <html ng-app="freedomDashboard" ng-controller="AppCtrl">
-  <head>
-    <title ng-bind="pageTitle"></title>
+		<head>
+				<title ng-bind="pageTitle"></title>
 
-    <!-- social media tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="Freedom">
-    <meta name="twitter:title" content="Freedom!">
-    <meta name="twitter:description" content="Be free.">
-    <meta name="twitter:creator" content="@mcnfreedom">
-    <meta name="twitter:image:src" content="https://pbs.twimg.com/profile_images/378800000777645485/368d390e68cd8e5e3d6968df1d03b50f.png">
-    <meta property="og:title" content="Freedom!" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://freedom.tm" />
-    <meta property="og:image" content="https://pbs.twimg.com/profile_images/378800000777645485/368d390e68cd8e5e3d6968df1d03b50f.png" />
-    <meta property="og:description" content="Be free.">
+				<!-- social media tags -->
+				<meta name="twitter:card" content="summary">
+				<meta name="twitter:site" content="Freedom">
+				<meta name="twitter:title" content="Freedom!">
+				<meta name="twitter:description" content="Be free.">
+				<meta name="twitter:creator" content="@mcnfreedom">
+				<meta name="twitter:image:src" content="https://pbs.twimg.com/profile_images/378800000777645485/368d390e68cd8e5e3d6968df1d03b50f.png">
+				<meta property="og:title" content="Freedom!" />
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="http://freedom.tm" />
+				<meta property="og:image" content="https://pbs.twimg.com/profile_images/378800000777645485/368d390e68cd8e5e3d6968df1d03b50f.png" />
+				<meta property="og:description" content="Be free.">
+				<style type="text/css">
+								[ng\:cloak], [ng-cloak], .ng-cloak {
+										display: none !important;
+								}
+				</style>
+				<!-- font awesome from BootstrapCDN -->
+				<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
-    <!-- font awesome from BootstrapCDN -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+				<!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+				<link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
-    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+				<!-- pass currentversion value -->
+				<script type="text/javascript">
+								currentVersion = "<%= version %>";
+				</script>
 
-    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+				<!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+				<script type="text/javascript" src="<%= file %>"></script><% }); %>
 
-    <!-- it's stupid to have to load it here, but this is for the +1 button -->
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-      { "parsetags": "explicit" }
-    </script>
-  </head>
-  <body>
-    
-    <div class="sidebar" ng-include="'menu/menu.tpl.html'"></div>
-    <div class="content" ui-view="main"></div>
-    <!-- <div ng-include="'footer.tpl.html'"></div> -->
-
-  </body>
-  <script src="http://localhost:35729/livereload.js"></script>
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script>
-    // $.ajax({
-    //  url: "http://localhost:3000/user",
-    //  data: {},
-    //  type: "get",
-    //  // dataType: "",
-    //  success: function(resp,e,v){
-    //   console.log(resp);
-   
-    //  },
-    //  error: function(resp,e,v){
-    //   console.log('error at -----------------------------------');
-    //   console.log(obj);
-      
-    //  }
-    // });
-
-    // $.getJSON( 'http://localhost:3000/user', function ( data ) { console.log ( data ); } );
-  </script>
-
+				<!--script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+						// { "parsetags": "explicit" }
+				</script-->
+		</head>
+		<body ng-cloak>
+			<div class="topbar" ng-include="'menu/topbar.tpl.html'"></div>   
+			<div class="page-container" id="page-container">
+				<div class="page" ng-class="{'side-bar-active':sidebarActive}">
+					<div class="sidebar" ng-show="sidebarActive" ng-include="'menu/sidebar.tpl.html'"></div>
+					<div class="content" ui-view="main"></div>
+				</div>
+			</div>
+		</body>
+		<script src="http://localhost:35729/livereload.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </html>
