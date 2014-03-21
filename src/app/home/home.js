@@ -31,7 +31,12 @@ angular.module( 'freedomDashboard.home', [
         templateUrl: 'home/home.tpl.html'
       }
     },
-    data:{ pageTitle: 'Home', sidebarEnabled: true }
+    data: { 
+      pageTitle: 'Home', 
+      sidebarEnabled: true, 
+      sidebarAllowed: true,
+      contentClass: "content"
+    }
   });
 })
 

@@ -6,7 +6,7 @@
 					<div class="info">
 						<a href="/{{profile.custom_url}}">
 							<img class="avatar" ng-src="{{profile.avatar}}"></img>
-							<strong class="name" ng-bind="profile.fname+' '+profile.lname"></strong>
+							<strong class="name" ng-bind="profile.profile_info.fname+' '+profile.profile_info.lname"></strong>
 						</a>
 					</div>
 					<div class="badges">
@@ -34,6 +34,7 @@
 				</ul>
 			</div>
 			<div class="main-content-body">
+				<pre>{{profile | json}}</pre>
 			</div>
 		</div>
 	</div>

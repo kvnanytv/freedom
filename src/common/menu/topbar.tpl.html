@@ -5,18 +5,27 @@
         Dashboard - {{sidebarActive}}<br />
         <span ng-bind="'v '+currentVersion"></span>
     </h6>  -->
-    <button type="button" class="btn btn-default" ng-click="sidebarToggle()">
+    <button type="button" class="btn btn-default" ng-show="showSidebar()" ng-click="sidebarToggle()">
       <span class="glyphicon glyphicon-align-justify"></span>
     </button>
   </div>
-  <div class="account-box">
+  <div class="account-box" ng-switch on="isSignedin">
     <!-- <google-plus-signin clientid="{{clientId}}"></google-plus-signin> -->
-    <a href="#/login" class="signin btn btn-default">
+    <div class="btn-group" ng-show="isSignedin" ng-switch="true">
+      <button type="button" class="btn btn-default dropdown-toggle image-box" data-toggle="dropdown">
+        <span class="small-img" style="width:32px;height:32px;display:block;background-image: url(//lh5.googleusercontent.com/-qmWYcM0QXeY/AAAAAAAAAAI/AAAAAAAAAAA/yCwjkPLv8Eo/s32-c/photo.jpg);"></span>
+      </button>
+      <ul class="dropdown-menu account-drop" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="" ng-click="signOut()">Sign out</a></li>
+      </ul>
+    </div>
+    <a href="#/login" ng-hide="isSignedin" class="signin btn btn-default" ng-switch="false">
       Sign in
     </a>
-    <!-- <a href="//localhost:3000/googleauth" class="">
-      <i class="fa fa-google-plus-square"></i> Signin with Google
-    </a> -->
   </div>
   <div class="search-box">
     <form ng-submit="search(searchText)">

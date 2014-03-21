@@ -46,16 +46,18 @@ angular.module( 'freedomDashboard', [
 ])
 
 .config( ['$stateProvider', '$urlRouterProvider', '$httpProvider', 'RestangularProvider', 'freedomConfigProvider', function myAppConfig ( $stateProvider, $urlRouterProvider, $httpProvider, RestangularProvider, freedomConfigProvider) {
-  $urlRouterProvider.otherwise( '/' );
+  $urlRouterProvider.otherwise( '/overview' );
 
   /**** THIS CONFIG IS FOR REMOVING THE EXTRA HEADER ANGULAR SEND IN AJAX CALLS(HTTP) ***/ 
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common["X-Requested-With"];
+  $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
   /*** END ****/
-
+  console.log(freedomConfigProvider.getApikey);
   RestangularProvider.setDefaultRequestParams({
     apiKey: freedomConfigProvider.getApikey
   });
+  RestangularProvider.setDefaultHeaders({ "Content-Type": "application/x-www-form-urlencoded" });
   RestangularProvider.setBaseUrl(freedomConfigProvider.getBaseUrl);
   RestangularProvider.setResponseExtractor(function(response, operation) {
     if (operation === 'getList') {
@@ -66,30 +68,56 @@ angular.module( 'freedomDashboard', [
   });
 }])
 
+
+
 .run( function run () {
 })
 
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location, Restangular, localStorageService) {
+.controller( 'AppCtrl', function AppCtrl ( $scope, $state, $stateParams, $rootScope, $location, Restangular, localStorageService, freedomValues, freedomFunctions) {
+  $scope.currentAccount = {};
+  $rootScope.isSignedin = false;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     if ( angular.isDefined( toState.data.pageTitle ) ) {
       $scope.pageTitle = toState.data.pageTitle + ' | Freedom! Dashboard ' ;
     }
     $scope.sidebarActive = toState.data.sidebarEnabled;
+    $scope.sidebarAllowed = toState.data.sidebarAllowed;
+    if(!$scope.sidebarAllowed) {
+      $scope.sidebarActive = false;
+    }
+    $scope.mainContentClass = toState.data.contentClass;
+    $rootScope.isSignedin = freedomFunctions.isSignedin();
   });
+
   if(currentVersion) {
     console.log("Freedom! Dashboard v", currentVersion, "was loaded.");
     $scope.currentVersion = currentVersion;
   }
+ 
+ 
   $scope.search = function(searchText) {
     console.log(searchText);
   };
-  
-  $scope.sidebarToggle = function() {
-    $scope.sidebarActive = !$scope.sidebarActive;
+  $scope.showSidebar = function() {
+    return $scope.sidebarAllowed;
   };
-  localStorageService.add('localStorageKey1','bert');
-  var value = localStorageService.get('localStorageKey'); 
-  var value1 = localStorageService.get('localStorageKey1'); 
+  $scope.sidebarToggle = function() {
+    if($scope.sidebarAllowed) {
+      $scope.sidebarActive = !$scope.sidebarActive;  
+    }
+  };
+  $scope.reload = function () {
+    var current = $state.current;
+    var params = angular.copy($stateParams);
+    $state.transitionTo(current, params, { reload: true, inherit: true, notify: true });
+    console.log(123);
+  };
+  $scope.signOut = function() {
+    freedomValues.signInValues.set({});
+    $scope.reload();
+  };
+
+
 
   $scope.clientId = "565529935553-brq9fde3svr8v2bmkal23o37t20hjfkj.apps.googleusercontent.com";
   $scope.$on('event:google-plus-signin-success', function (event,authResult) {

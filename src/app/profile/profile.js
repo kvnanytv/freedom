@@ -12,17 +12,19 @@ angular.module( 'freedomDashboard.profile', [
         templateUrl: 'profile/profile.tpl.html'
       }
     },
-    data:{ pageTitle: 'Profile', sidebarEnabled: true  }
+    data: { 
+      pageTitle: 'Profile', 
+      sidebarEnabled: true, 
+      sidebarAllowed: true,
+      contentClass: "content"
+    }
   })
   ;
 })
 
-.controller( 'ProfileCtrl', function ProfileController( $scope, Restangular, $http, $state) { 
+.controller( 'ProfileCtrl', function ProfileController( $scope, freedomValues, Restangular, $http, $state) { 
   var query = {userid:'0'};
-  Restangular.one("user").get(query).then(function(user) {
-    $scope.profile = user.data;
-    $scope.badges = $scope.profile.freedom_data.badges;
-  });
+  $scope.profile = freedomValues.profileValues.get();
   $scope.pageTitle = "";
   $scope.selectedMenu = "channel";
   $scope.submenus = [

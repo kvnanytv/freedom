@@ -12,7 +12,12 @@ angular.module( 'freedomDashboard.login', [
         templateUrl: 'login/login.tpl.html'
       }
     },
-    data:{ pageTitle: 'Login', sidebarEnabled: false }
+    data:{ 
+      pageTitle: 'Login', 
+      sidebarEnabled: false, 
+      sidebarAllowed: true,
+      contentClass: "content-fixed" 
+    }
   })
   ;
 })

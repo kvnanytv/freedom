@@ -13,7 +13,12 @@ angular.module( 'freedomDashboard.about', [
         templateUrl: 'about/about.tpl.html'
       }
     },
-    data:{ pageTitle: 'What is It?' }
+    data: { 
+      pageTitle: 'About us!', 
+      sidebarEnabled: true, 
+      sidebarAllowed: true,
+      contentClass: "content"
+    }
   });
 })
 

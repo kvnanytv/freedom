@@ -21,7 +21,7 @@
 								}
 				</style>
 				<!-- font awesome from BootstrapCDN -->
-				<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+				<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
 
 				<!-- compiled CSS --><% styles.forEach( function ( file ) { %>
 				<link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
@@ -31,6 +31,7 @@
 								currentVersion = "<%= version %>";
 				</script>
 
+				
 				<!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
 				<script type="text/javascript" src="<%= file %>"></script><% }); %>
 
@@ -43,7 +44,7 @@
 			<div class="page-container" id="page-container">
 				<div class="page" ng-class="{'side-bar-active':sidebarActive}">
 					<div class="sidebar" ng-show="sidebarActive" ng-include="'menu/sidebar.tpl.html'"></div>
-					<div class="content" ui-view="main"></div>
+					<div class="{{mainContentClass}}" ui-view="main"></div>
 				</div>
 			</div>
 		</body>
