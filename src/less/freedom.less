@@ -37,6 +37,9 @@ div.page-container .page .content {
   transition: width 200ms linear;
   /*padding-top:10px;*/
 }
+div.page-container .page .content-fixed {
+  width:100%;
+}
 @media all and (max-width: 1229px) and (min-width: 600px) {
   div.page-container .page .content {
     width:810px;
@@ -89,6 +92,8 @@ div.topbar .topbar-container {
   border: 0;
   font-size: 100%;
   background: transparent;
+  height:50px;
+  /*overflow:hidden;*/
 }
 .freedom-logo {
     width: 230px; 
@@ -106,7 +111,7 @@ div.topbar .topbar-container {
 
 div.topbar .search-box {
   height:45px;
-  width:600px;
+  /*width:600px;*/
   padding:7px 5px 7px 5px;
   position: relative;
   /*margin-left: 230px;*/
@@ -147,10 +152,21 @@ div.topbar .account-box {
 div.topbar .account-box form {
   width:500px;
 }
-div.topbar .account-box .signin {
+div.topbar .account-box .signin,div.topbar .account-box .image-box {
   color: #333333;
   text-decoration: none;
   border-radius:0;
+}
+div.topbar .account-box .image-box {
+  padding:0 0;
+  border:0;
+}
+div.topbar .account-box .image-box span.small-img{
+  width:32px;
+  height:32px;
+}
+div.topbar .account-box .account-drop {
+  left:-136px;
 }
 /* SIDEBAR STYLE */
 div.sidebar {

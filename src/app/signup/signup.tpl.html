@@ -1,26 +1,67 @@
 <div class="signup-page"><div class="wrapper">
-	<form class="form form-horizontal">
+	<div class="container">
+		<h2>Basic Information!</h2>
+	</div>
+	<form class="form form-horizontal" ng-submit="submitRegistration()">
 		<div class="container">
 	        <div class="form-group">
-	           <div class="col-md-5">
-		           <label>Email</label>
-		           <input type="email" class="form-control input-lg" id="email" placeholder="email">
+	           <div class="col-md-6">
+		           <label>Username</label>
+		           <input type="text" ng-model="signupValues.displayName" class="form-control input-lg" placeholder="mcnfreedom">
 	           </div>
-	           <div class="col-md-5">
-		           <label>Email</label>
-		           <input type="email" class="form-control input-lg" id="email" placeholder="email">
+	           <div class="col-md-6">
+		           <label>Email Address</label>
+		           <input type="email" ng-model="signupValues.email.value" class="form-control input-lg" placeholder="email@freedom.tm">
 	           </div>
 	        </div>
 	        <div class="form-group">
-	           <div class="col-md-5">
-		           <label>Email</label>
-		           <input type="email" class="form-control input-lg" id="email" placeholder="email">
+	           <div class="col-md-6">
+		           <label>Last Name</label>
+		           <input type="text" ng-model="signupValues.name.familyName" class="form-control input-lg" placeholder="Last Name">
 	           </div>
-	           <div class="col-md-5">
-		           <label>Email</label>
-		           <input type="email" class="form-control input-lg" id="email" placeholder="email">
+	           <div class="col-md-6">
+		           <label>First Name</label>
+		           <input type="text" ng-model="signupValues.name.givenName" class="form-control input-lg" placeholder="First Name">
 	           </div>
 	        </div>
+	        <div class="form-group">
+	           <div class="col-md-6">
+		           <label>Birthyear</label>
+				    <div class="row">
+				        <div class="col-md-12">
+				            <p class="input-group">
+				              <input type="text" class="form-control input-lg" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-disabled />
+				              <span class="input-group-btn">
+				                <button class="btn btn-default btn-lg" style="margin:0 0;padding-bottom:11px" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+				              </span>
+				            </p>
+				        </div>
+				    </div>
+	           </div>
+	           <div class="col-md-6">
+		           <label>YouTube Channel Category</label>
+		           <select class="form-control input input-lg" ng-model="signupValues.category" ng-options="item.id as item.text for item in categories"></select>
+	           </div>
+	        </div>
+	        <div class="form-group">
+	           <div class="col-md-6">
+		           <label>Skype(optional)</label>
+		           <input type="text" ng-model="signupValues.skypeEmail" class="form-control input-lg" placeholder="Skype(optional)">
+	           </div>
+	           <div class="col-md-6">
+		           <label>Who told you about us?(optional)</label>
+		           <input type="text" ng-model="signupValues.referrerDesc" class="form-control input-lg" placeholder="Friends, Family, George?">
+	           </div>
+	        </div>
+	        <div class="form-group">
+	           <div class="col-md-12 big-text" style="text-align:center">
+		           <h3>Tell us a little about yourself (and why you chose us!)</h3>
+		           <textarea type="email" ng-model="signupValues.reason" class="form-control input-lg" placeholder="Tell us!"></textarea>
+	           </div>
+	        </div>
+	        <div class="col-md-12 big-text" style="text-align:center">
+	           <button tyle="submit" class="btn btn-lg btn-success">Continue >></button>
+           </div>
         </div>
     </form>
 </div></div>
